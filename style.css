@@ -1,0 +1,72 @@
+.container-fluid {
+  width: 90%;
+  margin-top: 20px;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  color: #323331;
+  }
+p {
+  font-weight: 400;
+  color: #323331;
+}
+.help-panel p {
+  display: inline;
+  float: right;
+  font-size: 15px;
+  text-align: center;
+  padding: 10px
+}
+.wf-tabs {
+  float: right;
+  margin: 0;
+}
+.info-panel {
+  background-color: #fff;
+  margin: 20px 0 0 20px;
+  padding: 20px 40px;
+  position: relative;
+  float: right;
+  text-align: center;
+  line-height: 15px;
+  border-radius: 3px;
+  & .glyphicon-info-sign {
+    font-size: 26px;
+    color: #D57551;
+  }
+}
+.student-details {
+  padding: 10px;
+  height: 350px
+}
+.activity-feed-panel {
+  padding: 10px;
+  height: 350px;
+}
+
+
+
+
+
+
+
+
+
+.select-class {
+  margin: 20px 0px 10px 10px;
+}
+.btn {
+  margin: 20px 0px 10px 0px;
+}
+.check-class {
+  margin: 0 10px 10px 20px;
+}
+.wf-main {
+  background-color: #D0D1CA;
+  border-radius: 3px;
+  padding: 30px;
+  margin-top: 0px;
+}
+.manage-students-btn {
+  font-size: 10px;
+}
