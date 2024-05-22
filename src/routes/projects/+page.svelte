@@ -64,7 +64,7 @@
 			>
 
 			{#if repo.description}
-				<p>{repo.description}</p>
+				<p class="description">{repo.description}</p>
 			{/if}
 			<div class="row">
 				<div class="icons">
@@ -122,6 +122,13 @@
     }
     @media only screen and (max-width: 600px)
     {
+		h1{
+			text-align: center;
+		}
+		.description
+		{
+			text-align: center;
+		}
         .row {
             flex-direction: column-reverse;
         }

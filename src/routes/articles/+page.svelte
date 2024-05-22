@@ -61,7 +61,7 @@
 <section class="articles" transition:fade>
     {#each displayedArticles as article}
         <article class="article" transition:fade>
-            <h1>{article.title}</h1>
+            <h1 class="title">{article.title}</h1>
             <a href={article.link} target="_blank" style="text-decoration: none;">
                 <img src={openbook} alt="" style="height: 20px;">
                 <img src={medium} alt="" style="height: 20px;">
@@ -81,6 +81,10 @@
         border: 1px solid #ccc;
         padding: 1rem;
         border-radius: 0.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
     }
     @media only screen and (max-width: 1325px)
     {
@@ -88,5 +92,12 @@
             grid-template-columns: 1fr;
             padding-top: 0;
         }
+        .article {
+            align-items: center;
+        }
+        .title {
+            text-align: center;
+        }
+
     }
 </style>

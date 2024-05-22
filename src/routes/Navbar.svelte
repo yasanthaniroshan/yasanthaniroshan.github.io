@@ -33,7 +33,7 @@
 
 		margin-bottom: 2vh;
 
-		font-size: 0.8vw;
+		font-size: 1rem;
 		font-weight: 500;
 
 		background-color: #8d8d8d;
@@ -67,7 +67,6 @@
 		}
 
 		.nav-bar-buttons {
-			font-size: 0.8vw;
 			font-weight: 500;
             border-radius: 6vw;
 
@@ -90,7 +89,6 @@
 		}
 
 		.nav-bar-buttons {
-			font-size: 2vw;
 			font-weight: 500;
 		}
 		.nav-bar-options {
@@ -119,7 +117,6 @@
 		}
 
 		.nav-bar-buttons {
-			font-size: 3vw;
 			font-weight: 500;
             border-radius: 4vw;
 
