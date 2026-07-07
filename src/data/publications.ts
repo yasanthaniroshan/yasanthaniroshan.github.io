@@ -33,6 +33,22 @@ export const publications: Publication[] = [
 }`,
 	},
 	{
+		title: 'Bee Acoustic Dataset with Environmental Parameters',
+		authors: ['Y. Niroshana', 'S. Sooriyaarachchi', 'I. Gunarathne'],
+		venue: 'Zenodo (dataset)',
+		year: 2026,
+		doi: '10.5281/zenodo.19739013',
+		link: 'https://doi.org/10.5281/zenodo.19739013',
+		bibtex: `@misc{niroshana2026_bee_dataset,
+  author    = {Y. Niroshana and S. Sooriyaarachchi and I. Gunarathne},
+  title     = {Bee Acoustic Dataset with Environmental Parameters},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.19739013},
+  url       = {https://doi.org/10.5281/zenodo.19739013}
+}`,
+	},
+	{
 		title:
 			'Peak detection of PPG signals using fixed-point digital filters implemented in VHDL',
 		authors: ['H. K. Y. Niroshana', 'W. M. Wimalasiri', 'C. Hettiarachchi'],
