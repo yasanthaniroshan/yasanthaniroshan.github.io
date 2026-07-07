@@ -100,7 +100,7 @@ export const projects: Project[] = [
 		tech: ['Django', 'JavaScript'],
 		github: 'https://github.com/yasanthaniroshan/Bus-Tracking-System',
 		category: 'Software',
-		highlight: '31 stars',
+		highlight: '31',
 	},
 	{
 		name: 'FastAPI + SQL Databases',

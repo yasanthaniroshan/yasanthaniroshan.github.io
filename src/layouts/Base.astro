@@ -8,7 +8,7 @@ interface Props {
 
 const {
 	title,
-	description = 'Yasantha Niroshan — Computer Science & Engineering undergraduate at the University of Moratuwa, working on embedded machine learning.',
+	description = 'Yasantha Niroshan — Computer Science & Engineering graduate from the University of Moratuwa, working on embedded machine learning.',
 } = Astro.props;
 
 const nav = [
@@ -34,6 +34,13 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 		<meta property="og:description" content={description} />
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
+		<script is:inline>
+			// restore saved theme before first paint to avoid a flash
+			const saved = localStorage.getItem('theme');
+			if (saved === 'light' || saved === 'dark') {
+				document.documentElement.dataset.theme = saved;
+			}
+		</script>
 	</head>
 	<body>
 		<div class="wrapper">
@@ -51,6 +58,9 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 						))
 					}
 					<a href="https://blog.yasantha.me" rel="noopener">Blog&thinsp;↗</a>
+					<button class="theme-toggle" aria-label="Toggle color theme">
+						<span class="moon">☾</span><span class="sun">☀</span>
+					</button>
 				</nav>
 			</header>
 			<main>
@@ -61,5 +71,15 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 				<a href="https://github.com/yasanthaniroshan" rel="noopener">github.com/yasanthaniroshan</a>
 			</footer>
 		</div>
+		<script is:inline>
+			document.querySelector('.theme-toggle').addEventListener('click', () => {
+				const root = document.documentElement;
+				const isDark = root.dataset.theme
+					? root.dataset.theme === 'dark'
+					: window.matchMedia('(prefers-color-scheme: dark)').matches;
+				root.dataset.theme = isDark ? 'light' : 'dark';
+				localStorage.setItem('theme', root.dataset.theme);
+			});
+		</script>
 	</body>
 </html>
