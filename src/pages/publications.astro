@@ -1,0 +1,13 @@
+---
+import Base from '../layouts/Base.astro';
+import PublicationItem from '../components/PublicationItem.astro';
+import { publications } from '../data/publications';
+---
+
+<Base
+	title="Publications — Yasantha Niroshan"
+	description="Publications by Yasantha Niroshan."
+>
+	<h1>Publications</h1>
+	{publications.map((publication) => <PublicationItem publication={publication} />)}
+</Base>

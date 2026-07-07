@@ -1,0 +1,28 @@
+---
+import Base from '../layouts/Base.astro';
+import ProjectItem from '../components/ProjectItem.astro';
+import { projects, categories } from '../data/projects';
+---
+
+<Base
+	title="Projects — Yasantha Niroshan"
+	description="Selected projects by Yasantha Niroshan — embedded systems, machine learning, and systems software."
+>
+	<h1>Projects</h1>
+	<p>
+		A selection of things I've built. More on
+		<a href="https://github.com/yasanthaniroshan" rel="noopener">GitHub</a>.
+	</p>
+	{
+		categories.map((category) => (
+			<section>
+				<h2>{category}</h2>
+				{projects
+					.filter((p) => p.category === category)
+					.map((project) => (
+						<ProjectItem project={project} />
+					))}
+			</section>
+		))
+	}
+</Base>

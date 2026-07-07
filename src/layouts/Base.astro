@@ -1,0 +1,65 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const {
+	title,
+	description = 'Yasantha Niroshan — Computer Science & Engineering undergraduate at the University of Moratuwa, working on embedded machine learning.',
+} = Astro.props;
+
+const nav = [
+	{ href: '/', label: 'Home' },
+	{ href: '/projects', label: 'Projects' },
+	{ href: '/publications', label: 'Publications' },
+];
+
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta name="author" content="Yasantha Niroshan" />
+		<link rel="icon" href="/favicon.ico" sizes="32x32" />
+		<link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
+	</head>
+	<body>
+		<div class="wrapper">
+			<header class="site-header">
+				<a class="site-title" href="/">Yasantha Niroshan</a>
+				<nav class="site-nav">
+					{
+						nav.map((item) => (
+							<a
+								href={item.href}
+								aria-current={currentPath === item.href ? 'page' : undefined}
+							>
+								{item.label}
+							</a>
+						))
+					}
+					<a href="https://blog.yasantha.me" rel="noopener">Blog&thinsp;↗</a>
+				</nav>
+			</header>
+			<main>
+				<slot />
+			</main>
+			<footer class="site-footer">
+				<a href="mailto:yasantha.21@cse.mrt.ac.lk">yasantha.21@cse.mrt.ac.lk</a>
+				<a href="https://github.com/yasanthaniroshan" rel="noopener">github.com/yasanthaniroshan</a>
+			</footer>
+		</div>
+	</body>
+</html>
