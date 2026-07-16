@@ -29,8 +29,27 @@ export interface MentoringModule {
 export const mentoring: MentoringModule[] = [
 	{
 		code: 'CS3283',
-		title: 'Embedded Systems Project',
-		meta: 'Mentored ~16 student teams (intake 22) through the full embedded product cycle — 5 of the teams below published at the ERU Symposium 2025.',
+		title: 'Embedded Systems Project — intake 23',
+		meta: 'Currently co-mentoring 2 ongoing project teams.',
+		projects: [
+			{
+				name: 'Sim-to-Real Deployment Framework for RL-based Robots',
+				description:
+					'Reusable framework that automatically converts robot policies trained in simulation (MuJoCo + PPO/Stable-Baselines3) into deployable code for ESP32-class microcontrollers, replacing today’s manual sim-to-real conversion process.',
+				repo: 'https://github.com/NidharVignesh/sim2real-framework',
+			},
+			{
+				name: 'Proactive Social Navigation for 2D LiDAR Mobile Robots',
+				description:
+					'Navigation approach for 2D-LiDAR mobile robots that anticipates the motion of people nearby to plan socially aware, non-disruptive paths.',
+				repo: 'https://github.com/nilum2002/proactive-social-nav',
+			},
+		],
+	},
+	{
+		code: 'CS3283',
+		title: 'Embedded Systems Project — intake 22',
+		meta: 'Mentored ~16 student teams through the full embedded product cycle — 5 of the teams below published at the ERU Symposium 2025.',
 		projects: [
 			{
 				name: 'ASCILAM',
@@ -153,7 +172,7 @@ export const mentoring: MentoringModule[] = [
 	{
 		code: 'CS3631 / CS4363',
 		title: 'Deep Neural Networks · Hardware Description Languages',
-		meta: 'Current teaching assistant; co-mentoring 2 ongoing projects.',
+		meta: 'Current teaching assistant.',
 		projects: [],
 	},
 ];
