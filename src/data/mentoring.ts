@@ -122,8 +122,33 @@ export const mentoring: MentoringModule[] = [
 	{
 		code: 'CS3340',
 		title: 'Robotics and Automation',
-		meta: 'Mentored ~8 student project teams.',
-		projects: [],
+		meta: 'Mentored ~8 student project teams building autonomous robots on the Kobuki platform with ROS 2.',
+		projects: [
+			{
+				name: 'Kobuki Robot Control System',
+				description:
+					'Complete ROS 2 control stack for a Kobuki base with LiDAR and Kinect — EKF and SLAM Toolbox for localization and mapping, plus a React web UI for teleoperation and autonomous navigation over rosbridge WebSockets.',
+				repo: 'https://github.com/IntellisenseLab/final-project-tk_botz',
+			},
+			{
+				name: 'Kobuki LiDAR + Kinect Semantic Robot',
+				description:
+					'Semantic mapping robot that fuses YOLO detections with Kinect depth and LiDAR range to pin recognized objects on a SLAM map, navigating with custom A* and taking voice commands over ROS 2 DDS.',
+				repo: 'https://github.com/IntellisenseLab/final-project-helaforge',
+			},
+			{
+				name: 'Vision-Based Leader–Follower Platooning',
+				description:
+					'Autonomous platooning system in which a Kobuki QBot follows a remote-controlled leader car using AprilTag detection, Kinect depth sensing, and PID control, with LiDAR-based localization and a safety monitor.',
+				repo: 'https://github.com/IntellisenseLab/final-project-self-name',
+			},
+			{
+				name: 'BotZilla — Object Detection, Collection & Placement',
+				description:
+					'Autonomous robot that detects, collects, and places cubes in an indoor arena using YOLOv8-nano vision and RGB-D sensing, running on a Raspberry Pi 4 on the Kobuki QBot platform.',
+				repo: 'https://github.com/IntellisenseLab/final-project-botzilla',
+			},
+		],
 	},
 	{
 		code: 'CS3631 / CS4363',
