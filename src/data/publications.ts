@@ -1,29 +1,41 @@
 /**
- * Publications shown on /publications.
- * To add a publication: paste a new object into the array below (newest first).
+ * Publications shown on /publications, grouped by `type` (newest first within each).
+ * To add a publication: paste a new object into the array below.
  * Any author whose name contains AUTHOR_MATCH is rendered in bold.
  */
 
 export const AUTHOR_MATCH = 'Niroshan';
 
+export type PublicationType = 'workshop' | 'conference' | 'dataset';
+
+export const publicationSections: { type: PublicationType; heading: string }[] = [
+	{ type: 'workshop', heading: 'Workshop Papers' },
+	{ type: 'conference', heading: 'Conference Papers' },
+	{ type: 'dataset', heading: 'Datasets' },
+];
+
 export interface Publication {
+	type: PublicationType;
 	title: string;
 	authors: string[];
 	venue: string;
 	year: number;
 	doi?: string;
 	link?: string;
+	code?: string;
 	bibtex?: string;
 }
 
 export const publications: Publication[] = [
 	{
+		type: 'workshop',
 		title:
 			'Patient-Aware Contrastive Learning Preserves Per-Patient Structure in RR-Interval Representations',
 		authors: ['Yasantha Niroshana', 'Weijith Wimalasiri', 'Chathuranga Hettiarachchi'],
 		venue: 'GlobalSouthML Workshop, International Conference on Machine Learning (ICML)',
 		year: 2026,
 		link: 'https://arxiv.org/abs/2606.23570',
+		code: 'https://github.com/EML-Labs/pacl-rri-af',
 		bibtex: `@inproceedings{niroshana2026patientaware,
   title     = {Patient-Aware Contrastive Learning Preserves Per-Patient Structure in RR-Interval Representations},
   author    = {Niroshana, Yasantha and Wimalasiri, Weijith and Hettiarachchi, Chathuranga},
@@ -33,6 +45,7 @@ export const publications: Publication[] = [
 }`,
 	},
 	{
+		type: 'dataset',
 		title: 'Bee Acoustic Dataset with Environmental Parameters',
 		authors: ['Y. Niroshana', 'S. Sooriyaarachchi', 'I. Gunarathne'],
 		venue: 'Zenodo (dataset)',
@@ -49,6 +62,7 @@ export const publications: Publication[] = [
 }`,
 	},
 	{
+		type: 'conference',
 		title:
 			'Peak detection of PPG signals using fixed-point digital filters implemented in VHDL',
 		authors: ['H. K. Y. Niroshana', 'W. M. Wimalasiri', 'C. Hettiarachchi'],
@@ -56,6 +70,7 @@ export const publications: Publication[] = [
 		year: 2025,
 		doi: '10.31705/ERU.2025.38',
 		link: 'https://dl.lib.uom.lk/items/73c999d1-3082-4812-94ae-30e70bf6d68a',
+		code: 'https://github.com/EML-Labs/PPG-Peak-Detection-on-FPGA',
 		bibtex: `@inproceedings{niroshana2025ppg,
   title     = {Peak detection of {PPG} signals using fixed-point digital filters implemented in {VHDL}},
   author    = {Niroshana, H. K. Y. and Wimalasiri, W. M. and Hettiarachchi, C.},
@@ -67,6 +82,7 @@ export const publications: Publication[] = [
 }`,
 	},
 	{
+		type: 'conference',
 		title: 'A smart mask for wireless, real-time monitoring of CO₂ and humidity',
 		authors: ['R. R. Kodisinghe', 'H. K. Y. Niroshan', 'W. M. Wimalasiri'],
 		venue: 'ERU Symposium, University of Moratuwa',

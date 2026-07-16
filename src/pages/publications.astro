@@ -1,13 +1,27 @@
 ---
 import Base from '../layouts/Base.astro';
 import PublicationItem from '../components/PublicationItem.astro';
-import { publications } from '../data/publications';
+import { publications, publicationSections } from '../data/publications';
 ---
 
 <Base
 	title="Publications — Yasantha Niroshan"
-	description="Publications by Yasantha Niroshan."
+	description="Publications by Yasantha Niroshan — workshop papers, conference papers, and datasets."
 >
 	<h1>Publications</h1>
-	{publications.map((publication) => <PublicationItem publication={publication} />)}
+	{
+		publicationSections.map((section) => {
+			const items = publications.filter((p) => p.type === section.type);
+			return (
+				items.length > 0 && (
+					<section>
+						<h2>{section.heading}</h2>
+						{items.map((publication) => (
+							<PublicationItem publication={publication} />
+						))}
+					</section>
+				)
+			);
+		})
+	}
 </Base>

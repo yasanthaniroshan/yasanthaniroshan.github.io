@@ -24,6 +24,7 @@ const { publication: pub } = Astro.props;
 	<div class="pub-links">
 		{pub.doi && <a href={`https://doi.org/${pub.doi}`} rel="noopener">DOI</a>}
 		{pub.link && <a href={pub.link} rel="noopener">Full text</a>}
+		{pub.code && <a href={pub.code} rel="noopener">Code</a>}
 		{
 			pub.bibtex && (
 				<details>
