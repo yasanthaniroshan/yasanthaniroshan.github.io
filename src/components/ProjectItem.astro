@@ -1,20 +1,21 @@
 ---
-import type { Project } from '../data/projects';
+import type { CollectionEntry } from 'astro:content';
 
 interface Props {
-	project: Project;
+	project: CollectionEntry<'projects'>;
 }
 
 const { project } = Astro.props;
+const { title, summary, tech, highlight } = project.data;
 ---
 
 <article class="project">
 	<h3>
-		<a href={project.github} rel="noopener">{project.name}</a>
-		{project.highlight && <span class="star">★ {project.highlight}</span>}
+		<a href={`/projects/${project.id}`}>{title}</a>
+		{highlight && <span class="star">★ {highlight}</span>}
 	</h3>
-	<p>{project.description}</p>
+	<p>{summary}</p>
 	<ul class="tags">
-		{project.tech.map((t) => <li>{t}</li>)}
+		{tech.map((t) => <li>{t}</li>)}
 	</ul>
 </article>

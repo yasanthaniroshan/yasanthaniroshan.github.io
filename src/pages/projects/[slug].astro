@@ -1,0 +1,60 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+
+export async function getStaticPaths() {
+	const projects = await getCollection('projects');
+	return projects.map((project) => ({
+		params: { slug: project.id },
+		props: { project },
+	}));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+const { title, summary, tech, github, video, demo, article } = project.data;
+---
+
+<Base title={`${title} — Yasantha Niroshan`} description={summary}>
+	<article class="project-page">
+		<h1>{title}</h1>
+		<ul class="tags interests">
+			{tech.map((t) => <li>{t}</li>)}
+		</ul>
+		<div class="pub-links">
+			<a href={github} rel="noopener"><Icon name="github" /> Code</a>
+			{
+				demo && (
+					<a href={demo} rel="noopener">
+						<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+							<path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1ZM2.5 8a5.5 5.5 0 0 1 .1-1h2.55c-.04.33-.07.66-.07 1s.03.67.07 1H2.6a5.5 5.5 0 0 1-.1-1Zm.62 2.5h2.2c.19.75.47 1.42.82 1.96a5.53 5.53 0 0 1-3.02-1.96Zm0-5a5.53 5.53 0 0 1 3.02-1.96c-.35.54-.63 1.21-.82 1.96h-2.2ZM8 13.4c-.5-.24-1.11-1.1-1.44-2.4h2.88c-.33 1.3-.94 2.16-1.44 2.4Zm-1.67-3.9a8.98 8.98 0 0 1 0-3h3.34a8.98 8.98 0 0 1 0 3H6.33ZM8 2.6c.5.24 1.11 1.1 1.44 2.4H6.56c.33-1.3.94-2.16 1.44-2.4Zm2.06 1.94c-.19-.75-.47-1.42-.82-1.96a5.53 5.53 0 0 1 3.02 1.96h-2.2Zm.67 4.46c.04-.33.07-.66.07-1s-.03-.67-.07-1h2.55c.07.32.1.66.1 1s-.03.68-.1 1h-2.55Zm-.67 3.96c.35-.54.63-1.21.82-1.96h2.2a5.53 5.53 0 0 1-3.02 1.96Z" />
+						</svg>
+						Live demo
+					</a>
+				)
+			}
+			{
+				video && (
+					<a href={video} rel="noopener">
+						<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+							<path d="M8 1C4.5 1 1.8 1.3 1.8 1.3S1 2.4 1 8s.8 6.7.8 6.7 2.7.3 6.2.3 6.2-.3 6.2-.3.8-1.1.8-6.7-.8-6.7-.8-6.7S11.5 1 8 1zm-1.5 4.2L11 8l-4.5 2.8V5.2z" />
+						</svg>
+						Video
+					</a>
+				)
+			}
+			{
+				article && (
+					<a href={article} rel="noopener">
+						<Icon name="file" /> Article
+					</a>
+				)
+			}
+		</div>
+		<div class="prose">
+			<Content />
+		</div>
+		<p class="back-link"><a href="/projects">← All projects</a></p>
+	</article>
+</Base>

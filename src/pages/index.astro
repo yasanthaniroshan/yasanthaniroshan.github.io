@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
 import { mentoring } from '../data/mentoring';
 ---
 
@@ -10,12 +11,12 @@ import { mentoring } from '../data/mentoring';
 			<h1>Yasantha Niroshan</h1>
 			<p class="tagline">Research Assistant · University of Moratuwa</p>
 			<ul class="quick-links">
-				<li><a href="mailto:yasantha.21@cse.mrt.ac.lk">Email</a></li>
-				<li><a href="https://scholar.google.com/citations?user=GZNFVeEAAAAJ&hl=en" rel="noopener">Google Scholar</a></li>
-				<li><a href="https://orcid.org/0009-0009-8004-4831" rel="noopener">ORCID</a></li>
-				<li><a href="https://github.com/yasanthaniroshan" rel="noopener">GitHub</a></li>
-				<li><a href="https://linkedin.com/in/yasantha-niroshan" rel="noopener">LinkedIn</a></li>
-				<li><a href="/cv.pdf">CV</a></li>
+				<li><a href="mailto:yasantha.21@cse.mrt.ac.lk"><Icon name="mail" /> Email</a></li>
+				<li><a href="https://scholar.google.com/citations?user=GZNFVeEAAAAJ&hl=en" rel="noopener"><Icon name="scholar" /> Scholar</a></li>
+				<li><a href="https://orcid.org/0009-0009-8004-4831" rel="noopener"><Icon name="orcid" /> ORCID</a></li>
+				<li><a href="https://github.com/yasanthaniroshan" rel="noopener"><Icon name="github" /> GitHub</a></li>
+				<li><a href="https://linkedin.com/in/yasantha-niroshan" rel="noopener"><Icon name="linkedin" /> LinkedIn</a></li>
+				<li><a href="/cv.pdf"><Icon name="file" /> CV</a></li>
 			</ul>
 		</div>
 	</div>
@@ -35,7 +36,7 @@ import { mentoring } from '../data/mentoring';
 	</p>
 
 	<h2>Research Interests</h2>
-	<ul>
+	<ul class="tags interests">
 		<li>Embedded Machine Learning (TinyML)</li>
 		<li>Neuromorphic Computing</li>
 		<li>Resource-Constrained Neural Network Optimization</li>

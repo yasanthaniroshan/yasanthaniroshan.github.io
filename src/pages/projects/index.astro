@@ -1,0 +1,37 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import ProjectItem from '../../components/ProjectItem.astro';
+
+const projects = await getCollection('projects');
+const categories = ['Research & Embedded', 'Systems & Software'] as const;
+const byCategory = (category: string) =>
+	projects
+		.filter((p) => p.data.category === category)
+		.sort((a, b) => a.data.order - b.data.order);
+---
+
+<Base
+	title="Projects — Yasantha Niroshan"
+	description="Selected projects by Yasantha Niroshan — embedded systems, machine learning, and systems software."
+>
+	<h1>Projects</h1>
+	<p>
+		A selection of things I've built — each links to a short write-up. More on <a
+			href="https://github.com/yasanthaniroshan"
+			rel="noopener">GitHub</a
+		>.
+	</p>
+	{
+		categories.map((category) => (
+			<section>
+				<h2>{category}</h2>
+				<div class="projects-grid">
+					{byCategory(category).map((project) => (
+						<ProjectItem project={project} />
+					))}
+				</div>
+			</section>
+		))
+	}
+</Base>
