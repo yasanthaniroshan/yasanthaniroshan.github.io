@@ -358,6 +358,90 @@ li::marker {
 	color: var(--muted);
 }
 
+/* ── Mentored projects ────────────────────────────────────── */
+
+.mentoring-module {
+	border: 1px solid var(--rule);
+	border-radius: 8px;
+	padding: 0.65rem 0.9rem;
+	margin-bottom: 0.7rem;
+}
+
+.mentoring-module summary {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 0.3rem 1rem;
+	cursor: pointer;
+	list-style: none;
+}
+
+.mentoring-module summary::-webkit-details-marker {
+	display: none;
+}
+
+.mentoring-module summary .role::before {
+	content: '▸';
+	display: inline-block;
+	margin-right: 0.5rem;
+	color: var(--muted);
+	transition: transform 0.15s ease;
+}
+
+.mentoring-module[open] summary .role::before {
+	transform: rotate(90deg);
+}
+
+.mentoring-module summary:hover .role::before {
+	color: var(--accent);
+}
+
+.mentoring-module .count {
+	font-family: var(--sans);
+	font-size: 0.78rem;
+	color: var(--muted);
+	background: var(--pill-bg);
+	border: 1px solid var(--rule);
+	border-radius: 999px;
+	padding: 0.08rem 0.6rem;
+}
+
+.mentoring-module .meta {
+	margin: 0.6rem 0 0;
+	font-family: var(--sans);
+	font-size: 0.86rem;
+	color: var(--muted);
+}
+
+.mentored {
+	margin: 0.7rem 0 0.2rem;
+	font-size: 0.94rem;
+}
+
+.mentored li {
+	margin-bottom: 0.8rem;
+}
+
+.paper-line {
+	margin: 0.25rem 0 0;
+	font-size: 0.88rem;
+	color: var(--muted);
+}
+
+.paper-tag {
+	font-family: var(--sans);
+	font-size: 0.72rem;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	color: var(--muted);
+	background: var(--pill-bg);
+	border: 1px solid var(--rule);
+	border-radius: 999px;
+	padding: 0.05rem 0.5rem;
+	white-space: nowrap;
+}
+
 /* ── Projects ─────────────────────────────────────────────── */
 
 .project {

@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import { mentoring } from '../data/mentoring';
 ---
 
 <Base title="Yasantha Niroshan">
@@ -79,6 +80,55 @@ import Base from '../layouts/Base.astro';
 			Dec 2024 – May 2025 · Diagnostic tooling for industrial sub-GHz wireless mesh networks
 		</p>
 	</div>
+
+	<h2>Teaching &amp; Mentoring</h2>
+	<p>
+		As a teaching assistant I've mentored <strong>24+ undergraduate project teams</strong>,
+		several of which published their work at the ERU Symposium.
+	</p>
+	{
+		mentoring.map((mod) =>
+			mod.projects.length > 0 ? (
+				<details class="mentoring-module">
+					<summary>
+						<span class="role">
+							<strong>{mod.code}</strong> — {mod.title}
+						</span>
+						<span class="count">{mod.projects.length} projects</span>
+					</summary>
+					<p class="meta">{mod.meta}</p>
+					<ul class="mentored">
+						{mod.projects.map((p) => (
+							<li>
+								<a href={p.repo} rel="noopener">
+									{p.name}
+								</a>{' '}
+								— {p.description}
+								{p.paper && (
+									<p class="paper-line">
+										<span class="paper-tag">
+											Paper{p.paper.coAuthor ? ' · co-authored' : ''}
+										</span>{' '}
+										<a href={p.paper.link} rel="noopener">
+											{p.paper.title}
+										</a>{' '}
+										— {p.paper.summary}
+									</p>
+								)}
+							</li>
+						))}
+					</ul>
+				</details>
+			) : (
+				<div class="cv-item">
+					<p class="role">
+						<strong>{mod.code}</strong> — {mod.title}
+					</p>
+					<p class="meta">{mod.meta}</p>
+				</div>
+			)
+		)
+	}
 
 	<h2>Awards &amp; Honours</h2>
 	<ul>
