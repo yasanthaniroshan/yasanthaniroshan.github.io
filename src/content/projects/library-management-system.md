@@ -5,6 +5,7 @@ tech: [Django, Python]
 github: https://github.com/yasanthaniroshan/Library-Management-System
 category: Systems & Software
 order: 5
+article: https://python.plainenglish.io/building-a-library-management-system-lms-using-django-85a3dd4d9a49
 ---
 
 A straightforward library management system built with **Django**: librarians can add, view, and delete books with details such as title, author, genre, and copy counts, and find anything quickly with title/author search.

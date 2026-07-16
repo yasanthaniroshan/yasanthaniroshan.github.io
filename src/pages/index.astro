@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import { mentoring } from '../data/mentoring';
+import { writing } from '../data/writing';
 ---
 
 <Base title="Yasantha Niroshan">
@@ -130,6 +131,21 @@ import { mentoring } from '../data/mentoring';
 			)
 		)
 	}
+
+	<h2>Writing</h2>
+	<p>Technical articles written for outside publications, before this site had a blog.</p>
+	<ul class="writing-list">
+		{
+			writing.map((a) => (
+				<li>
+					<a href={a.link} rel="noopener">
+						{a.title}
+					</a>{' '}
+					<span class="meta">— {a.publication}</span>
+				</li>
+			))
+		}
+	</ul>
 
 	<h2>Awards &amp; Honours</h2>
 	<ul>
