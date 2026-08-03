@@ -80,9 +80,60 @@ const linkLabel = isArxiv ? 'arXiv' : pub.type === 'dataset' ? 'Data' : 'Paper';
 						</svg>
 						BibTeX
 					</summary>
-					<pre><code>{pub.bibtex}</code></pre>
+					<pre><button type="button" class="copy-bibtex">Copy</button><code>{pub.bibtex}</code></pre>
 				</details>
 			)
 		}
 	</div>
 </article>
+
+<script>
+	if (!(window as any).__copyBibtexInit) {
+		(window as any).__copyBibtexInit = true;
+		document.addEventListener('astro:page-load', () => {
+			document.querySelectorAll<HTMLButtonElement>('.copy-bibtex').forEach((btn) => {
+				btn.addEventListener('click', async () => {
+					const code = btn.closest('pre')?.querySelector('code')?.textContent ?? '';
+					try {
+						await navigator.clipboard.writeText(code);
+						const original = btn.textContent;
+						btn.textContent = 'Copied';
+						setTimeout(() => {
+							btn.textContent = original;
+						}, 1500);
+					} catch {
+						// clipboard permission denied — no-op, user can still select the text manually
+					}
+				});
+			});
+		});
+	}
+</script>
+
+<style>
+	pre {
+		position: relative;
+	}
+
+	.copy-bibtex {
+		position: absolute;
+		top: 0.6rem;
+		right: 0.6rem;
+		font-family: var(--sans);
+		font-size: 0.7rem;
+		color: var(--muted);
+		background: var(--bg);
+		border: 1px solid var(--rule);
+		border-radius: 999px;
+		padding: 0.15rem 0.6rem;
+		cursor: pointer;
+		transition:
+			color 0.15s ease,
+			border-color 0.15s ease;
+	}
+
+	.copy-bibtex:hover {
+		color: var(--accent);
+		border-color: var(--accent);
+	}
+</style>

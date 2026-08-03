@@ -1,4 +1,5 @@
 ---
+import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css';
 
 interface Props {
@@ -15,10 +16,30 @@ const nav = [
 	{ href: '/', label: 'Home' },
 	{ href: '/projects', label: 'Projects' },
 	{ href: '/publications', label: 'Publications' },
-	{ href: '/cv.pdf', label: 'CV' },
+	{ href: '/cv', label: 'CV' },
 ];
 
 const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+
+const personSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'Person',
+	name: 'Yasantha Niroshan',
+	url: 'https://yasantha.me',
+	image: new URL('/profile.webp', Astro.site).toString(),
+	jobTitle: 'Research Assistant',
+	affiliation: {
+		'@type': 'CollegeOrUniversity',
+		name: 'University of Moratuwa',
+	},
+	email: 'mailto:yasantha.21@cse.mrt.ac.lk',
+	sameAs: [
+		'https://scholar.google.com/citations?user=GZNFVeEAAAAJ&hl=en',
+		'https://orcid.org/0009-0009-8004-4831',
+		'https://github.com/yasanthaniroshan',
+		'https://linkedin.com/in/yasantha-niroshan',
+	],
+};
 ---
 
 <!doctype html>
@@ -35,15 +56,39 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 		<meta property="og:description" content={description} />
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
+		<meta property="og:image" content={new URL('/profile.webp', Astro.site)} />
+		<meta name="twitter:card" content="summary" />
+		<meta name="theme-color" content="#fdfcf9" />
+		<script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+		<ClientRouter />
 		<script is:inline>
-			// restore saved theme before first paint to avoid a flash
-			const saved = localStorage.getItem('theme');
-			if (saved === 'light' || saved === 'dark') {
-				document.documentElement.dataset.theme = saved;
+			// restore saved theme before first paint, and again after every
+			// client-side navigation (ClientRouter resets <html> attributes
+			// to match the freshly fetched page, which has no data-theme)
+			function currentIsDark() {
+				const theme = document.documentElement.dataset.theme;
+				return theme ? theme === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
 			}
+			function syncThemeUI() {
+				const isDark = currentIsDark();
+				const btn = document.querySelector('.theme-toggle');
+				if (btn) btn.setAttribute('aria-pressed', String(isDark));
+				const meta = document.querySelector('meta[name="theme-color"]');
+				if (meta) meta.setAttribute('content', isDark ? '#121316' : '#fdfcf9');
+			}
+			function restoreTheme() {
+				const saved = localStorage.getItem('theme');
+				if (saved === 'light' || saved === 'dark') {
+					document.documentElement.dataset.theme = saved;
+				}
+				syncThemeUI();
+			}
+			restoreTheme();
+			document.addEventListener('astro:after-swap', restoreTheme);
 		</script>
 	</head>
 	<body>
+		<a class="skip-link" href="#main-content">Skip to content</a>
 		<div class="wrapper">
 			<header class="site-header">
 				<a class="site-title" href="/">Yasantha Niroshan</a>
@@ -59,15 +104,20 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 						))
 					}
 					<a href="https://blog.yasantha.me" rel="noopener">Blog&thinsp;↗</a>
-					<button class="theme-toggle" aria-label="Toggle color theme">
+					<button
+						class="theme-toggle"
+						aria-label="Toggle color theme"
+						aria-pressed="false"
+						transition:persist
+					>
 						<span class="moon">☾</span><span class="sun">☀</span>
 					</button>
 				</nav>
 			</header>
-			<main>
+			<main id="main-content">
 				<slot />
 			</main>
-			<footer class="site-footer">
+			<footer class="site-footer" transition:persist>
 				<a href="mailto:yasantha.21@cse.mrt.ac.lk">yasantha.21@cse.mrt.ac.lk</a>
 				<a href="https://github.com/yasanthaniroshan" rel="noopener">github.com/yasanthaniroshan</a>
 			</footer>
@@ -75,11 +125,10 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 		<script is:inline>
 			document.querySelector('.theme-toggle').addEventListener('click', () => {
 				const root = document.documentElement;
-				const isDark = root.dataset.theme
-					? root.dataset.theme === 'dark'
-					: window.matchMedia('(prefers-color-scheme: dark)').matches;
+				const isDark = currentIsDark();
 				root.dataset.theme = isDark ? 'light' : 'dark';
 				localStorage.setItem('theme', root.dataset.theme);
+				syncThemeUI();
 			});
 		</script>
 	</body>

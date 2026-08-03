@@ -1,0 +1,145 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import { mentoring } from '../data/mentoring';
+import { writing } from '../data/writing';
+---
+
+<Base title="CV — Yasantha Niroshan" description="Curriculum vitae for Yasantha Niroshan — education, experience, teaching, publications, and awards.">
+	<h1>Curriculum Vitae</h1>
+	<ul class="quick-links">
+		<li><a href="/cv.pdf"><Icon name="file" /> Download PDF</a></li>
+		<li><button type="button" onclick="window.print()">Print</button></li>
+	</ul>
+
+	<nav class="cv-toc" aria-label="On this page">
+		<a href="#education">Education</a>
+		<a href="#experience">Experience</a>
+		<a href="#teaching-mentoring">Teaching &amp; Mentoring</a>
+		<a href="#writing">Writing</a>
+		<a href="#awards-honours">Awards</a>
+		<a href="#invited-talks">Talks</a>
+	</nav>
+
+	<h2 id="education">Education</h2>
+	<div class="cv-item">
+		<p class="role">
+			<strong>B.Sc. (Hons) in Engineering — Computer Science &amp; Engineering</strong>
+		</p>
+		<p class="meta">University of Moratuwa · Aug 2022 – 2026 · CGPA 3.75/4.00</p>
+		<p class="meta">
+			Specialization: Integrated Computer Engineering · Minor: Pattern Recognition
+		</p>
+	</div>
+	<div class="cv-item">
+		<p class="meta">
+			G.C.E. Advanced Level (Physical Science), Mahinda College — 3As, island rank 115
+		</p>
+	</div>
+
+	<h2 id="experience">Experience</h2>
+	<div class="cv-item">
+		<p class="role"><strong>Research Assistant</strong> — University of Moratuwa</p>
+		<p class="meta">2026 – Present · Research in Predictive Maintenance</p>
+	</div>
+	<div class="cv-item">
+		<p class="role"><strong>Lead Software Engineer</strong> (part-time) — <a href="https://roboticgen.co" rel="noopener">RoboticGen</a></p>
+		<p class="meta">May 2023 – Present · Leading software development for STEM-focused EdTech platforms</p>
+	</div>
+	<div class="cv-item">
+		<p class="role"><strong>Teaching Assistant</strong> — University of Moratuwa</p>
+		<p class="meta">
+			Jul 2025 – Present · CS3631 Deep Neural Networks, CS4363 Hardware Description Languages
+			(previously CS3283, CS3340)
+		</p>
+	</div>
+	<div class="cv-item">
+		<p class="role"><strong>Embedded Software Engineer Intern</strong> — Ackcio</p>
+		<p class="meta">
+			Dec 2024 – May 2025 · Diagnostic tools for industrial sub-GHz wireless mesh networks
+		</p>
+	</div>
+
+	<h2 id="teaching-mentoring">Teaching &amp; Mentoring</h2>
+	<p>
+		As a teaching assistant I've mentored <strong>24+ undergraduate projects</strong> where several published their work at the ERU Symposium and I'm currently co-mentoring two more.
+	</p>
+	{
+		mentoring.map((mod) =>
+			mod.projects.length > 0 ? (
+				<details class="mentoring-module">
+					<summary>
+						<span class="role">
+							<strong>{mod.code}</strong> — {mod.title}
+						</span>
+						<span class="count">{mod.projects.length} projects</span>
+					</summary>
+					<p class="meta">{mod.meta}</p>
+					<ul class="mentored">
+						{mod.projects.map((p) => (
+							<li>
+								<a href={p.repo} rel="noopener">
+									{p.name}
+								</a>{' '}
+								— {p.description}
+								{p.paper && (
+									<p class="paper-line">
+										<span class="paper-tag">
+											Paper{p.paper.coAuthor ? ' · co-authored' : ''}
+										</span>{' '}
+										<a href={p.paper.link} rel="noopener">
+											{p.paper.title}
+										</a>{' '}
+										— {p.paper.summary}
+									</p>
+								)}
+							</li>
+						))}
+					</ul>
+				</details>
+			) : (
+				<div class="cv-item">
+					<p class="role">
+						<strong>{mod.code}</strong> — {mod.title}
+					</p>
+					<p class="meta">{mod.meta}</p>
+				</div>
+			)
+		)
+	}
+
+	<h2 id="writing">Writing</h2>
+	<p>Technical articles written for outside publications, before this site had a blog.</p>
+	<ul class="writing-list">
+		{
+			writing.map((a) => (
+				<li>
+					<a href={a.link} rel="noopener">
+						{a.title}
+					</a>{' '}
+					<span class="meta">— {a.publication}</span>
+				</li>
+			))
+		}
+	</ul>
+
+	<h2 id="awards-honours">Awards &amp; Honours</h2>
+	<ul>
+		<li>Winner — Evolve IoT Research Competition (IoT smart helmet using Thread protocol), 2024</li>
+		<li>2nd Runner-Up — Bashaway, national Linux scripting competition, SLIIT FOSS, 2024</li>
+		<li>2nd Runner-Up — Brainstorm (AI physiotherapy assistant), IEEE EMBS UoM, 2024</li>
+		<li>Bronze Medal — All Island Mathematics Competition, 2019</li>
+	</ul>
+
+	<h2 id="invited-talks">Invited Talks</h2>
+	<ul>
+		<li>Introduction to IoT — SLIoT 2025, University of Moratuwa, Feb 2025</li>
+		<li>Getting Started with IoT/Robotics — MoraForesight 1.0 &amp; 2.0, 2023–2024</li>
+		<li>Introduction to Arduino Programming — Kickstart to Robotics, IEEE Techverse SL, 2022</li>
+	</ul>
+
+	<p class="meta">
+		Certifications: TinyML Professional Certificate (HarvardX) · Embedded Software Essentials (CU
+		Boulder) · Embedded Machine Learning (Edge Impulse) — 2024
+	</p>
+</Base>

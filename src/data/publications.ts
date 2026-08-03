@@ -24,6 +24,8 @@ export interface Publication {
 	link?: string;
 	code?: string;
 	bibtex?: string;
+	/** Shown in the "Selected Publications" section on the homepage. */
+	featured?: boolean;
 }
 
 export const publications: Publication[] = [
@@ -34,6 +36,7 @@ export const publications: Publication[] = [
 		authors: ['Yasantha Niroshana', 'Weijith Wimalasiri', 'Chathuranga Hettiarachchi'],
 		venue: 'GlobalSouthML Workshop, International Conference on Machine Learning (ICML)',
 		year: 2026,
+		featured: true,
 		link: 'https://arxiv.org/abs/2606.23570',
 		code: 'https://github.com/EML-Labs/pacl-rri-af',
 		bibtex: `@inproceedings{niroshana2026patientaware,
@@ -68,6 +71,7 @@ export const publications: Publication[] = [
 		authors: ['H. K. Y. Niroshana', 'W. M. Wimalasiri', 'C. Hettiarachchi'],
 		venue: 'ERU Symposium, University of Moratuwa',
 		year: 2025,
+		featured: true,
 		doi: '10.31705/ERU.2025.38',
 		link: 'https://dl.lib.uom.lk/items/73c999d1-3082-4812-94ae-30e70bf6d68a',
 		code: 'https://github.com/EML-Labs/PPG-Peak-Detection-on-FPGA',

@@ -16,7 +16,6 @@ const projects = defineCollection({
 		github: z.string().url(),
 		category: z.enum(['Research & Embedded', 'Systems & Software']),
 		order: z.number().default(99),
-		highlight: z.string().optional(),
 		video: z.string().url().optional(),
 		demo: z.string().url().optional(),
 		article: z.string().url().optional(),
