@@ -10,15 +10,23 @@ export interface NewsItem {
 
 export const news: NewsItem[] = [
 	{
-		date: '2026',
-		text: 'Started as a Research Assistant at the University of Moratuwa, working on predictive maintenance.',
+		date: 'Aug 2026',
+		text: 'Paper "Patient Aware Contrastive Learning for Paroxysmal Atrial Fibrillation Detection Using RR Intervals" nominated for Best Paper at MERCon (IEEE).',
 	},
 	{
-		date: '2026',
+		date: 'Aug 2026',
+		text: 'Taking a career break from my role as Lead Software Engineer at RoboticGen to focus on building my research career.',
+	},
+	{
+		date: 'Jul 2026',
+		text: 'Started as a Graduate Research Assistant at the University of Moratuwa, working on predictive maintenance.',
+	},
+	{
+		date: 'May 2026',
 		text: 'New workshop paper, "Patient-Aware Contrastive Learning...", accepted at the ICML GlobalSouthML Workshop.',
 	},
 	{
-		date: '2026',
+		date: 'Apr 2026',
 		text: 'Released the Bee Acoustic Dataset with Environmental Parameters on Zenodo.',
 	},
 ];

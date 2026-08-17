@@ -48,6 +48,20 @@ export const publications: Publication[] = [
 }`,
 	},
 	{
+		type: 'conference',
+		title:
+			'Patient Aware Contrastive Learning for Paroxysmal Atrial Fibrillation Detection Using RR Intervals',
+		authors: [
+			'Yasantha Niroshana',
+			'Weijith Wimalasiri',
+			'Joshua P. Kulasingham',
+			'Chathuranga Hettiarachchi',
+		],
+		venue: 'Moratuwa Engineering Research Conference (MERCon), IEEE — Best Paper Award Nominee',
+		year: 2026,
+		featured: true,
+	},
+	{
 		type: 'dataset',
 		title: 'Bee Acoustic Dataset with Environmental Parameters',
 		authors: ['Y. Niroshana', 'S. Sooriyaarachchi', 'I. Gunarathne'],

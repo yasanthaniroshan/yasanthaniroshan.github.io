@@ -402,16 +402,52 @@ h3 {
 
 .news-list li {
 	display: flex;
+	align-items: baseline;
 	gap: 0.9rem;
 	margin-bottom: 0.55rem;
 }
 
 .news-list .news-date {
 	flex-shrink: 0;
-	width: 3rem;
+	width: 4.5rem;
 	font-family: var(--sans);
 	font-size: 0.82rem;
 	color: var(--muted);
+}
+
+.news-more {
+	margin-top: -0.2rem;
+}
+
+.news-more summary {
+	cursor: pointer;
+	list-style: none;
+	font-family: var(--sans);
+	font-size: 0.82rem;
+	color: var(--muted);
+}
+
+.news-more summary::-webkit-details-marker {
+	display: none;
+}
+
+.news-more summary::before {
+	content: '▸';
+	display: inline-block;
+	margin-right: 0.4rem;
+	transition: transform 0.15s ease;
+}
+
+.news-more[open] summary::before {
+	transform: rotate(90deg);
+}
+
+.news-more summary:hover {
+	color: var(--accent);
+}
+
+.news-more .news-list {
+	margin-top: 0.55rem;
 }
 
 /* ── CV entries (subtle timeline) ─────────────────────────── */
