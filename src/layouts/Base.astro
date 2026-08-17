@@ -60,6 +60,24 @@ const personSchema = {
 		<meta name="twitter:card" content="summary" />
 		<meta name="theme-color" content="#fdfcf9" />
 		<script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-DCXP45GZ9F"></script>
+		<script is:inline>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag('js', new Date());
+			gtag('config', 'G-DCXP45GZ9F');
+			// re-send page_view on client-side navigation, since ClientRouter
+			// swaps content without a full reload that gtag.js would otherwise catch
+			document.addEventListener('astro:after-swap', () => {
+				gtag('event', 'page_view', {
+					page_location: location.href,
+					page_path: location.pathname,
+					page_title: document.title,
+				});
+			});
+		</script>
 		<ClientRouter />
 		<script is:inline>
 			// restore saved theme before first paint, and again after every
