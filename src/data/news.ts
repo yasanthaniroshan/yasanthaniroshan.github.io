@@ -22,6 +22,10 @@ export const news: NewsItem[] = [
 		text: 'Started as a Graduate Research Assistant at the University of Moratuwa, working on predictive maintenance.',
 	},
 	{
+		date: 'Jul 2026',
+		text: 'Served as a reviewer for the GlobalSouthAI Workshop at IJCAI 2026.',
+	},
+	{
 		date: 'May 2026',
 		text: 'New workshop paper, "Patient-Aware Contrastive Learning...", accepted at the ICML GlobalSouthML Workshop.',
 	},
