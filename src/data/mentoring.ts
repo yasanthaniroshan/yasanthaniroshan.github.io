@@ -170,8 +170,8 @@ export const mentoring: MentoringModule[] = [
 		],
 	},
 	{
-		code: 'CS3631 / CS4363',
-		title: 'Deep Neural Networks · Hardware Description Languages',
+		code: 'CS3631',
+		title: 'Deep Neural Networks',
 		meta: 'Current teaching assistant.',
 		projects: [],
 	},
