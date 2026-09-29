@@ -11,6 +11,21 @@ export interface Article {
 
 export const writing: Article[] = [
 	{
+		title: 'Pushing a $7 Linux Board to the Limit',
+		publication: 'Medium',
+		link: 'https://medium.com/@niroshanyi/pushing-a-7-linux-board-to-the-limit-a840ef04d1d1',
+	},
+	{
+		title: 'Why Do Microcontrollers Get Distracted?',
+		publication: 'RoboticGen Labs',
+		link: 'https://blog.roboticgenlabs.com/why-do-microcontrollers-get-distracted-a24502951c1e',
+	},
+	{
+		title: 'Blinking into the Heart of Arduino',
+		publication: 'Stackademic',
+		link: 'https://blog.stackademic.com/blinking-into-the-heart-of-arduino-8b552976592c',
+	},
+	{
 		title: 'Building a Library Management System using Django',
 		publication: 'Python in Plain English',
 		link: 'https://python.plainenglish.io/building-a-library-management-system-lms-using-django-85a3dd4d9a49',
