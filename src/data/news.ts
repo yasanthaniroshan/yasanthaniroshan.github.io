@@ -11,7 +11,7 @@ export interface NewsItem {
 export const news: NewsItem[] = [
     {
         date: 'Sep 2026',
-        text: 'I served as reviewer for the GlobalSouthAI workshop at NURIPs.',
+        text: 'I served as reviewer for the GlobalSouthAI workshop at NeurIPS.',
     },
     {
         date: 'Sep 2026',
