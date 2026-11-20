@@ -10,6 +10,10 @@ export interface NewsItem {
 
 export const news: NewsItem[] = [
     {
+        date: 'Nov 2026',
+        text: 'Our final year project "Predicting Atrial Fibrillation at Edge" has won the Merit Award in the SLAAI Best AI Undergraduate Project Award 2026.',
+    },
+    {
         date: 'Sep 2026',
         text: 'I served as reviewer for the GlobalSouthAI workshop at NeurIPS.',
     },
